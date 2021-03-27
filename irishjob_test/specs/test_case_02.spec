@@ -8,6 +8,9 @@ Every heading in this file denotes a scenario. Every bulleted point denotes a st
 Scenario Heading
 ----------------
 * Go to site "https://www.irishjobs.ie/" now
-* Login user "tester.cdiaz@gmail.com" with password "20.Serv3r.Id"
+
+Please enter valid credentials to test
+* Login user "abc123@gmail.com" with password "abc1234"
+
 * Search a fake job "Hamburguesa"
 * Search a real job "Manager"
