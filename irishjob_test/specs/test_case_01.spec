@@ -10,6 +10,6 @@ Scenario Heading
 * Go to site "https://www.irishjobs.ie/" now
 
 Please enter valid credentials to test
-* Login user "abc123@gmail.com" with password "abc1234"
+* Login user "tester.cdiaz@gmail.com" with password "20.Serv3r.Id"
 
 * Verify amount jobs recommended for you
