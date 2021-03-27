@@ -1,6 +1,7 @@
 import com.google.protobuf.Duration;
 import org.assertj.core.api.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import com.thoughtworks.gauge.Step;
 import driver.Driver;
@@ -25,12 +26,13 @@ public class Selenium {
         webDriver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
         webDriver.get("https://www.irishjobs.ie/");
 
-        this._get_element_by_id(webDriver, "sign-in-toggle").click();
+        this._javascript_element(webDriver, "/html[1]/body[1]/span[1]/span[1]/div[2]/div[1]/div[2]/button[2]");
 
-        //webDriver.findElement(By.id("sign-in-toggle")).click();
-        webDriver.findElement(By.id("Email")).sendKeys("tester.cdiaz@gmail.com");
-        webDriver.findElement(By.id("Password")).sendKeys("20.Serv3r.Id");
-        webDriver.findElement(By.id("loginButton")).click();
+        this._get_element_by_id(webDriver, "sign-in-toggle").click();
+        this._get_element_by_id(webDriver, "Email").sendKeys("tester.cdiaz@gmail.com");
+        this._get_element_by_id(webDriver, "Password").sendKeys("20.Serv3r.Id");
+        this._get_element_by_id(webDriver, "loginButton").click();
+
 
 
         WebElement element = webDriver.findElement(By.xpath("//body/div[@id='page']/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]"));
@@ -43,8 +45,21 @@ public class Selenium {
         WebDriverWait wait = new WebDriverWait(web, 30);
         wait.until(ExpectedConditions.elementToBeClickable(By.id(id)));
         WebElement element = web.findElement(By.id(id));
+        System.out.print("It interacts with: " + id);
         return element;
+    }
 
+    public WebElement _get_element_by_xpath(WebDriver web, String xpath){
+        WebDriverWait wait = new WebDriverWait(web, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(xpath)));
+        WebElement element = web.findElement(By.id(xpath));
+        System.out.print("It interacts with: " + xpath);
+        return element;
+    }
+
+    public void _javascript_element(WebDriver web, String element){
+        JavascriptExecutor executor = (JavascriptExecutor) web;
+        executor.executeScript("arguments[0].click();", web.findElement(By.xpath(element)));
     }
 
 
