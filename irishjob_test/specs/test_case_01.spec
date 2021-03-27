@@ -7,4 +7,6 @@ Every heading in this file denotes a scenario. Every bulleted point denotes a st
      
 Scenario Heading
 ----------------
-* Open browser
+* Go to site "https://www.irishjobs.ie/" now
+* Login user "tester.cdiaz@gmail.com" with password "20.Serv3r.Id"
+* Verify amount jobs recommended for you
