@@ -33,6 +33,8 @@ public class Selenium {
         this._get_element_by_id(webDriver, "Password").sendKeys("20.Serv3r.Id");
         this._get_element_by_id(webDriver, "loginButton").click();
 
+        this._get_element_by_xpath(webDriver, "//a[contains(text(),'IrishJobs.ie')]").click();
+
 
 
         WebElement element = webDriver.findElement(By.xpath("//body/div[@id='page']/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]"));
@@ -51,8 +53,8 @@ public class Selenium {
 
     public WebElement _get_element_by_xpath(WebDriver web, String xpath){
         WebDriverWait wait = new WebDriverWait(web, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(xpath)));
-        WebElement element = web.findElement(By.id(xpath));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+        WebElement element = web.findElement(By.xpath(xpath));
         System.out.print("It interacts with: " + xpath);
         return element;
     }
@@ -60,6 +62,14 @@ public class Selenium {
     public void _javascript_element(WebDriver web, String element){
         JavascriptExecutor executor = (JavascriptExecutor) web;
         executor.executeScript("arguments[0].click();", web.findElement(By.xpath(element)));
+    }
+
+    public WebElement _get_element_by_link(WebDriver web, String link){
+        WebDriverWait wait = new WebDriverWait(web, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText(link)));
+        WebElement element = web.findElement(By.linkText(link));
+        System.out.print("It interacts with: " + link);
+        return element;
     }
 
 
